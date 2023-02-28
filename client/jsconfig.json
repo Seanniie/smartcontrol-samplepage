@@ -1,26 +1,10 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES6",
+    "target": "es6",
     "baseUrl": "src"
   },
-  
-  "eslintOptions": {
-    "plugins": [
-      "eslint-plugin-react"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-  },
   "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+      "src"
+  ]
 }
