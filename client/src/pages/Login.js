@@ -1,120 +1,62 @@
-import React, { useState } from "react";
-import {
-  Avatar,
-  Button,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Container
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
-
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
-}));
+import React, { useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import "../login.css";
 
 const Login = () => {
-  const classes = useStyles();
-  const [id, setId] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedUsername && storedPassword) {
+      setUsername(storedUsername);
+      setPassword(storedPassword);
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ID:", id);
-    console.log("Password:", password);
+
+    if (rememberMe) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+    } else {
+      localStorage.removeItem("username");
+      localStorage.removeItem("password");
+    }
+
+    console.log("username:", username, "password:", password, "remember me:", rememberMe);
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="id"
-            label="ID"
-            name="id"
-            autoFocus
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+    <div className="login-wrapper">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="form-field">
+          <TextField label="아이디" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div className="form-field">
+          <TextField label="비밀번호" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+        <div className="form-field">
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />}
+            label="비밀번호 기억하기"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
+        </div>
+        <div className="form-field">
+          <Button variant="contained" type="submit">
+            Login
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {"Powered by ChatGPT"}
-        </Typography>
-      </Box>
-    </Container>
+        </div>
+      </form>
+    </div>
   );
 };
 
