@@ -56,7 +56,12 @@ const Login = () => {
     <Box className="main">
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-field">
-          <TextField className="login-textfield" label="아이디" value={userId} onChange={(e) => setUserId(e.target.value)}/>
+          <TextField 
+            className="login-textfield" 
+            label="아이디" 
+            value={userId} 
+            onChange={(e) => setUserId(e.target.value)}
+          />
         </div>
         <div className="form-field">
           <TextField
@@ -66,24 +71,15 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             InputProps={{
-              endAdornment: (
-                <IconButton onClick={handleShowPassword}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              ),
+              endAdornment: <IconButton onClick={handleShowPassword}>{showPassword ? <VisibilityOff /> : <Visibility />}</IconButton>
             }}
           />
         </div>
         <div className="form-field">
-          <FormControlLabel
-            control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}/>}
-            label="비밀번호 기억하기"
-          />
+          <FormControlLabel control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}/>} label="비밀번호 기억하기"/>
         </div>
         <div className="form-field">
-          <Button variant="contained" className="login-textfield" type="submit">
-            Login
-          </Button>
+          <Button variant="contained" className="login-textfield" type="submit">Login</Button>
         </div>
       </form>
     </Box>
