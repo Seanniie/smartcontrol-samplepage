@@ -6,8 +6,8 @@ const MainContent = () => {
 
   return (
     <>
-      <Header />
-      <Body />
+      <Header/>
+      <Body/>
     </>
   );
 };

@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import "../login.css";
-import { Box, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const Login = () => {
@@ -53,7 +53,7 @@ const Login = () => {
   };
 
   return (
-    <Box className="main">
+    <>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-field">
           <TextField 
@@ -82,7 +82,7 @@ const Login = () => {
           <Button variant="contained" className="login-textfield" type="submit">Login</Button>
         </div>
       </form>
-    </Box>
+    </>
   );
 };
 
