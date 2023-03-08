@@ -1,31 +1,26 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import React from "react";
 
-const theme = createTheme({
-  components: {
-    MuiBox: {
-      styleOverrides: {
-        root: {
-            position: 'sticky',
-            borderBottom: '1px solid lightgray',
-            boxShadow: 'none',
-        },
-      },
-    },
+const useStyles = makeStyles((theme) => ({
+  menu: {
+    height: '100vh',
+    background: '#284461',
+    [theme.breakpoints.up('sm')]: {
+      width: '260px',
+      flexShrink: 0,
+    }
   },
-});
+}));
 
-const MainContent = () => {
+export default function MainContent () {
+
+  const classes = useStyles();
 
   return (
-    <ThemeProvider>
-      <Box>
-      </Box>
-    </ThemeProvider>
+    <Box className={classes.menu}>
+    </Box>
   );
 };
-
-export default MainContent;
 
 

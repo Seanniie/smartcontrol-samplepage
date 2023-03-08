@@ -2,7 +2,7 @@ import Body from "components/comp/Body";
 import Header from "components/comp/Header";
 import React from "react";
 
-const MainContent = () => {
+export default function MainContent () {
 
   return (
     <>
@@ -12,5 +12,4 @@ const MainContent = () => {
   );
 };
 
-export default MainContent;
 
