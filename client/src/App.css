@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+body, html, #root {
+    height: 100%;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -29,39 +37,37 @@
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+body::backdrop {
+    background-color: #fff;
+}
+
 body {
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
-    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 13px;
+    font-family: "Noto Sans KR","Helvetica","Arial",sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
     background-color: #fff;
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img, svg {
+    vertical-align: middle;
+}
+
+[role=button] {
+    cursor: pointer;
 }
 
 .wrapper {
     align-items: stretch;
     display: flex;
     width: 100%;
-    background: #fff;
-}
-
-body, html, #root {
-    height: 100%;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    background: #222E3C;
 }
 
 .form-field {
-    width: 25%;
     text-align: center;
     margin-bottom: 13px;
 }
@@ -77,9 +83,10 @@ body, html, #root {
 .login-textfield {
     width: 100%;
 }
-  
 
-
-
-
-
+.sidebar-brand {
+    padding: 1.15rem 1.5rem;
+    display: flex;
+    height: 5.5rem;
+    justify-content: center;
+}
