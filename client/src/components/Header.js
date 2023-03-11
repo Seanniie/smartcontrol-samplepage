@@ -1,20 +1,26 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from "react-redux";
 import { AppBar, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
-import setMenuSlice from 'redux/reducers/setMenuState';
+import { useDispatch, useSelector } from 'react-redux';
+import setSideBarSlice from 'redux/reducers/setSideBarState';
+import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 export default function Header () {
-
-    const dispatch = useDispatch();
-    const isMenuOpen = useSelector(state=>{
-        return state.MenuState.value;
-    });
-    const handleMenuButtonClick = () => {
-        dispatch(setMenuSlice.actions.setMenuOpen(!isMenuOpen));
-    }
     
+    const dispatch = useDispatch();
+    const isSideBarOpen = useSelector(state=>{
+        return state.SibeBarState.value;
+    });
+    useEffect(() => {
+        dispatch(setSideBarSlice.actions.setSideBarOpen(true));
+    }, [dispatch]);
+
+    const handleMenuButtonClick = useCallback(() => {
+        dispatch(setSideBarSlice.actions.setSideBarOpen(!isSideBarOpen));
+    }, [dispatch, isSideBarOpen]);
+
     return (
         <AppBar>
             <Toolbar>

@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import setMenuSlice from './reducers/setMenuState';
+import setSideBarSlice from './reducers/setSideBarState';
 
 const store = configureStore({
   reducer:{
-    MenuState: setMenuSlice.reducer,
+    SibeBarState: setSideBarSlice.reducer,
   }
 });
 
