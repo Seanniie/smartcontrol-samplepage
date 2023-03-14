@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "redux/store";
 import { Box, ThemeProvider } from "@mui/material";
 import theme from "./theme.js"
-import Container from "components/Container";
+import Container from "pages/Container";
 import Sidebar from "components/Sidebar";
 
 export default function App () {

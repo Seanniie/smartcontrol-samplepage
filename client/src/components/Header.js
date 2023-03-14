@@ -11,7 +11,7 @@ export default function Header () {
     
     const dispatch = useDispatch();
     const isSideBarOpen = useSelector(state=>{
-        return state.SibeBarState.value;
+        return state.sideBarState.value;
     });
     useEffect(() => {
         dispatch(setSideBarSlice.actions.setSideBarOpen(true));
