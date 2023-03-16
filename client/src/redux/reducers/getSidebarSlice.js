@@ -1,10 +1,9 @@
-import { CellTowerSharp, PrecisionManufacturing } from '@mui/icons-material';
 import { createSlice } from '@reduxjs/toolkit';
 
 const menuData = [
   {
     id: "1",
-    icon: <PrecisionManufacturing fontSize="small"/>,
+    icon: "PrecisionManufacturing",
     title: "수요 계획",
     children: [
       {
@@ -38,7 +37,7 @@ const menuData = [
   },
   {
     id: "2",
-    icon: <CellTowerSharp fontSize="small"/>,
+    icon: "CellTowerSharp",
     title: "보충 계획",
     children: [
       {
@@ -55,7 +54,7 @@ const menuData = [
     ],
   },
 ];
- 
+
 const getSidebarSlice = createSlice({
   name:'getSidebarSlice',
   initialState: {value : menuData},

@@ -1,102 +1,47 @@
 import { Collapse, List, ListItemButton, ListItemText, Paper, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
-import { ExpandMore, AddBoxOutlined, ExpandLess, IndeterminateCheckBoxOutlined } from "@mui/icons-material";
+import { ExpandMore, AddBoxOutlined, ExpandLess, IndeterminateCheckBoxOutlined, PrecisionManufacturing, CellTowerSharp } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo from "assets/images/logo.png"
 
-const useStyles = makeStyles((theme) => ({
-  sideMenuContainer: {
-    [theme.breakpoints.up('sm')]: {
-      width: '260px',
-      flexShrink: 0,
-    }
-  },
-  noScrollBar: {
-    overflowY: 'scroll',
-    scrollbarWidth: 'none',
-    '&::-webkit-scrollbar': {
-      width: 0,
-      height: 0,
-      display: 'none',
-    }
-  },
-  menuBox: {
-    color: '#ebe9e9',
-    width: '100%',
-    maxWidth: '260px',
-  },
-  menulv2: {
-    fontWeight: '400',
-    color: '#ebe9e9',
-    background: '#284461',
-    paddingBottom: '4px',
-    paddingLeft: '24px',
-  },
-  menulv3: {
-    fontWeight: '400',
-    color: '#ebe9e9',
-    background: '#284461',
-    paddingBottom: '4px',
-    paddingTop: '4px',
-    '&:hover':{
-      color:'#0a58ca'
-    }
-    
-  },
-}));
-
 export default function Sidebar() {
 
-  const isSideBarOpen = useSelector((state) => {
-    return state.sideBarState.value;
-  });
-
-  const menuData = useSelector((state) => {
-    return state.sideBarTitles.value;
-  });
-  
+  const { value: isSideBarOpen } = useSelector((state) => state.sideBarState);
+  const { value: menuData } = useSelector((state) => state.sideBarTitles);
   const navigate = useNavigate();
-  const classes = useStyles();
-
   const [openMenuIds, setOpenMenuIds] = useState([]);
   const [openChildMenuIds, setOpenChildMenuIds] = useState([]);
+  const handleClick = (id, setOpenIds, openIds) =>
+    openIds.includes(id) ? setOpenIds(openIds.filter((openedId) => openedId !== id)): setOpenIds([...openIds, id]);
+  
+  const iconMap = {
+    "PrecisionManufacturing": <PrecisionManufacturing fontSize="small"/>,
+    "CellTowerSharp": <CellTowerSharp fontSize="small"/>,
+  };
+  
+  const Icon = ({ iconName }) => {
+    return iconMap[iconName];
+  };
 
-  const handleMenuClick = (id) => {
-    if (openMenuIds.includes(id)) {
-      setOpenMenuIds(openMenuIds.filter((menuId) => menuId !== id));
-    } else {
-      setOpenMenuIds([...openMenuIds, id]);
-    }
-  };
-  
-  const handleChildMenuClick = (id) => {
-    if (openChildMenuIds.includes(id)) {
-      setOpenChildMenuIds(openChildMenuIds.filter((childId) => childId !== id));
-    } else {
-      setOpenChildMenuIds([...openChildMenuIds, id]);
-    }
-  };
-  
   return (
     <>
       {isSideBarOpen && (
-        <Box className={classes.sideMenuContainer}>
+        <Box sx={{ width: { sm: '260px' }, flexShrink: 0 }} >
           <Paper sx={{ height: "100%", bgcolor: "#222E3C" }}>
             <Box>
               <span className="sidebar-brand">
                 <img alt="Home" src={logo} />
               </span>
             </Box>
-            <Paper className={classes.noScrollBar} sx={{ background: "#222E3C", height: "90%", boxShadow: "none", color:'#ebe9e9' }}>
+            <Paper sx={{ background: "#222E3C", height: "90%", boxShadow: "none", overflowY: 'scroll', '&::-webkit-scrollbar': {display: 'none'}}}>
               <Box>
-                <List className={classes.menuBox} disablePadding>
+                <List sx={{ color: "#ebe9e9"}} disablePadding>
                   {menuData.map((menu) => (
                     <Box key={menu.id}>
-                      <ListItemButton sx={{ pl: "12px" }} className={classes.menuBox} onClick={() => handleMenuClick(menu.id)}>
-                        {menu.icon}
+                      <ListItemButton sx={{ pl: "12px" }} onClick={() => handleClick(menu.id, setOpenMenuIds, openMenuIds)}>
+                        <Icon iconName={menu.icon} />
                         <ListItemText sx={{ ml: "8px" }}>
                           <Typography variant="string">{menu.title}</Typography>
                         </ListItemText>
@@ -104,10 +49,10 @@ export default function Sidebar() {
                       </ListItemButton>
                       {menu.children && (
                         <Collapse in={openMenuIds.includes(menu.id)}>
-                          <List disablePadding className={classes.menuBox}>
+                          <List disablePadding>
                             {menu.children.map((child) => (
                               <div key={child.id}>
-                                <ListItemButton onClick={() => handleChildMenuClick(child.id)} className={classes.menulv2}>
+                                <ListItemButton onClick={() => handleClick(child.id, setOpenChildMenuIds, openChildMenuIds)} sx={{background: '#284461', paddingLeft: '24px'}}>
                                   {openChildMenuIds.includes(child.id) ? <IndeterminateCheckBoxOutlined fontSize="string"/> : <AddBoxOutlined fontSize="string"/>}
                                   <ListItemText sx={{ml: "8px"}}>
                                     <Typography variant="string">{child.title}</Typography>
@@ -116,12 +61,12 @@ export default function Sidebar() {
                                 </ListItemButton>
                                 {child.children && (
                                   <Collapse in={openChildMenuIds.includes(child.id)}>
-                                    <List disablePadding className={classes.menulv3}>
+                                    <List disablePadding sx={{background: '#284461'}}>
                                     {child.children.map((grandchild) => (
                                       <div key={grandchild.id}>
-                                        <ListItemButton onClick={()=>navigate(grandchild.to)} sx={{pl:'36px'}} className={classes.menulv3}>
+                                        <ListItemButton onClick={() => navigate(grandchild.to)} sx={{ pl: '40px', '&:hover': { color: '#0a58ca' }}}>
                                           {grandchild.icon}
-                                          <ListItemText sx={{ml:'4px'}}> 
+                                          <ListItemText> 
                                             <Typography variant="string">{grandchild.title}</Typography>
                                           </ListItemText>
                                         </ListItemButton>
