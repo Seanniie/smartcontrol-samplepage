@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
- 
+
+//사이드바 open, close 상태값 set
 const setSideBarSlice = createSlice({
   name:'setSideBarSlice',
   initialState: {value : false},
@@ -10,4 +11,5 @@ const setSideBarSlice = createSlice({
     }
 });
 
-export default setSideBarSlice;
+export const { setSideBarOpen } = setSideBarSlice.actions;
+export default setSideBarSlice.reducer;

@@ -8,8 +8,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import "../App.css";
 import useLoginForm from "hooks/useLoginForm";
 import { useDispatch } from "react-redux";
-import setSideBarSlice from "redux/reducers/setSideBarState";
+import { setSideBarOpen } from "redux/reducers/setSideBarState";
 
+//로그인창, useLoginForm hooks 사용
 export default function Login () {
 
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function Login () {
   } = useLoginForm();
 
   useEffect(() => {
-    dispatch(setSideBarSlice.actions.setSideBarOpen(false));
+    dispatch(setSideBarOpen(false));
   }, [dispatch]);
 
   return (

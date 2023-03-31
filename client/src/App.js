@@ -4,10 +4,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Login from "pages/Login";
 import { Provider } from "react-redux";
 import store from "redux/store";
-import { Box, ThemeProvider } from "@mui/material";
-import theme from "./theme.js"
+import { Box } from "@mui/material";
 import Container from "pages/Container";
-import Sidebar from "components/Sidebar";
+import Sidebar from "components/Sidebar/Sidebar";
 
 export default function App () {
 
@@ -15,15 +14,14 @@ export default function App () {
 
   return (
     <Provider store = {store}>
-      <ThemeProvider theme={theme}>
-        <Sidebar/>
-        <Box className={`main ${location.pathname === "/" ? "login" : ""}`}>
-          <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/home" element={<Container/>}/>
-          </Routes>
-        </Box>
-      </ThemeProvider>
+      <Sidebar/>
+      {/* navigate된 url이 login일경우 className을 login으로 변경 */}
+      <Box className={`main ${location.pathname === "/login" ? "login" : ""}`}>
+        <Routes>
+          <Route path="/" element={<Container/>} />
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+      </Box>
     </Provider>
   );
 }
