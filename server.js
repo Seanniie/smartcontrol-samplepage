@@ -5,7 +5,7 @@ const app = express();
 const axios = require('axios');
 const path = require("path");
 
-//env 파일에 따로 포트가 지정되어있지 않으면 80포트를 사용한다.
+//env 파일에 따로 포트가 지정되어있지 않으면 3001포트를 사용한다.
 const port = process.env.PORT || 3001;
 app.use(express.json());
 //bodyParser 값일 시 node.js에 기본으로 내장된 queryString을 사용한다.
