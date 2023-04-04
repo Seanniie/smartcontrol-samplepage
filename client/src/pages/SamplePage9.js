@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from "@mui/system";
 import ComboSrchSelect from 'components/ComboSrchSelec';
-import BasicSelect from 'components/BasicSelect';
+import BasicSelect from 'components/common/BasicSelect';
 import Calender from 'components/Calendar';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';

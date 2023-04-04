@@ -3,7 +3,7 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
-import { setSideBarOpen } from 'redux/reducers/setSideBarState';
+import { setSideBarOpen } from 'redux/reducers/Sidebar/setSideBarSlice';
 import { useEffect } from 'react';
 import { AccountCircle } from '@mui/icons-material';
 import HeaderMenu from './HeaderMenu';

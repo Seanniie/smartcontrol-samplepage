@@ -2,29 +2,30 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { PriorityHigh } from '@mui/icons-material';
 
-export default function PasswordInput({ value, onChange, error }) {
+//defaultProps
+PasswordInput.defaultProps = {
+  label: 'label',
+  onChange: ()=>{},
+  error: null,
+  value: '',
+};
+
+export default function PasswordInput({ label, value, onChange, error, inputName }) {
   
-  const handleInputChange = (event) => {
-    onChange(event.target.value);
+  const handleInputChange = (e) => {
+    onChange(e);
   };
 
   return (
     <div className="mb-3">
       <label htmlFor="password" className="form-label">
-        비밀번호
+        {label}
       </label>
-      <input
-        type="password"
-        className="form-control"
-        value={value}
-        onChange={handleInputChange}
-      />
+      <input type="password" className="form-control" value={value} onChange={handleInputChange} name={inputName}/>
       {error && (
         <Box mt={'4px'} ml={'-7px'}>
           <PriorityHigh color="warning" fontSize="small" />
-          <Typography variant="string" color={'#ed6c02'}>
-            {error}
-          </Typography>
+          <Typography variant="string" color={'#ed6c02'}>{error}</Typography>
         </Box>
       )}
     </div>

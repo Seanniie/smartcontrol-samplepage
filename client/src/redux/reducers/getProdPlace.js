@@ -19,9 +19,6 @@ const prodPlace= [
 const getProdPlace = createSlice({
   name:'getProdPlace',
   initialState: {value : prodPlace},
-  reducers:{
-    
-    }
 });
 
 export default getProdPlace.reducer;

@@ -19,8 +19,6 @@ const gdCd= [
 const getGdCd = createSlice({
   name:'getgdCd',
   initialState: {value : gdCd},
-  reducers:{  
-  }
 });
 
 export default getGdCd.reducer;

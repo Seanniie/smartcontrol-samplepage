@@ -16,9 +16,6 @@ const productCd= [
 const getProductCd = createSlice({
   name:'getProductCd',
   initialState: {value : productCd},
-  reducers:{
-    
-    }
 });
 
 export default getProductCd.reducer;

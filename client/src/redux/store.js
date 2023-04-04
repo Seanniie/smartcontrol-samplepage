@@ -1,11 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit';
-import getSidebarSlice from './reducers/getSidebarSlice';
-import setActivatedMenu from './reducers/setActivatedMenu';
-import setOpenTab from './reducers/setOpenTab';
-import setSideBarSlice from './reducers/setSideBarState';
-import getProductCd from './reducers/getProductCd';
-import getProdPlace from './reducers/getProdPlace';
 import getGdCd from './reducers/getGdCd';
+import getProdPlace from './reducers/getProdPlace';
+import getProductCd from './reducers/getProductCd';
+import getSidebarSlice from './reducers/Sidebar/getSidebarSlice';
+import setSideBarSlice from './reducers/Sidebar/setSideBarSlice';
+import setActivatedMenu from './reducers/Tab/setActivatedMenu';
+import setOpenTab from './reducers/Tab/setOpenTab';
+
 
 const store = configureStore({
   reducer:{

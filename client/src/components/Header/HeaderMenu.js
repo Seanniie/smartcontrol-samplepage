@@ -1,9 +1,9 @@
 import React from 'react';
 import { Menu, MenuItem, ListItemText, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addTab } from 'redux/reducers/setOpenTab';
-import { setMenuId } from 'redux/reducers/setActivatedMenu';
+import { setMenuId } from 'redux/reducers/Tab/setActivatedMenu';
 import { useNavigate } from 'react-router-dom';
+import { addTab } from 'redux/reducers/Tab/setOpenTab';
 
 export default function HeaderMenu ({anchorEl, open, handleClose, crntOpnMenu}) {
     const dispatch = useDispatch();

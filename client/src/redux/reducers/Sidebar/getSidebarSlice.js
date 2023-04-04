@@ -89,9 +89,6 @@ const menuData = [
 const getSidebarSlice = createSlice({
   name:'getSidebarSlice',
   initialState: {value : menuData},
-  reducers:{
-    
-    }
 });
 
 export default getSidebarSlice.reducer;

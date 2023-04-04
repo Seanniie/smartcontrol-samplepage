@@ -20,8 +20,8 @@ const TabMenuConfig = [
     {id:"G020102", component:<SamplePage5/>, label: '샘플페이지5'},
     {id:"C0301", component:<SamplePage6/>, label: '샘플페이지6'},
     {id:"C0302", component:<SamplePage7/>, label: '샘플페이지7'},
-    {id:"C0401", component:<SamplePage8/>, label: '샘플페이지8'},
-    {id:"C0402", component:<SamplePage9/>, label: '샘플페이지9'},
+    {id:"C0401", component:<SamplePage8 isSearchShow={true} isSaveShow={true} isRefreshShow={true}/>, label: '샘플페이지8'},
+    {id:"C0402", component:<SamplePage9 isSearchShow={true} isSaveShow={true} isRefreshShow={true}/>, label: '샘플페이지9'},
 ]
     
 

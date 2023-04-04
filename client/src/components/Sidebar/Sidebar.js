@@ -4,8 +4,8 @@ import { ExpandMore, AddBoxOutlined, ExpandLess, IndeterminateCheckBoxOutlined, 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "assets/images/logo.png"
-import { addTab } from "redux/reducers/setOpenTab";
-import { setMenuId } from "redux/reducers/setActivatedMenu";
+import { setMenuId } from "redux/reducers/Tab/setActivatedMenu";
+import { addTab } from "redux/reducers/Tab/setOpenTab";
 
 //사이드바, 헤더의 isSideBarOpen에 따라 open, close
 export default function Sidebar() {

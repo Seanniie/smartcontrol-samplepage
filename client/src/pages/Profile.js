@@ -19,13 +19,10 @@ export default function Profile() {
 
   const activeComponent = cardList.find((item) => item.id === activeButton)?.component;
 
-
   return (
-    <>
-      <div className="row">
-        <ProfileCard cardList={cardList} activeButton={activeButton} handleButtonClick={handleButtonClick} />
-        <div className="col-md-9 col-xl-10">{activeButton && activeComponent}</div>
-      </div>
-    </>
+    <div className="row">
+      <ProfileCard cardList={cardList} activeButton={activeButton} handleButtonClick={handleButtonClick} />
+      <div className="col-md-9 col-xl-10">{activeButton && activeComponent}</div>
+    </div>
   );
 }
